@@ -12,12 +12,36 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+def cels_fahr(celsius):
+    return (celsius * 9 / 5) + 32
 
+def fahr_cels(fahrenheit):
+    return (fahrenheit - 32) * 5 / 9
+
+def vaild_num(prompt):
+    while True:
+        try:
+            return float(inptu(prompt))
+        except ValueError:
+            print("Invaild input")
+
+def menu():
+    while True:
+        print("1. Convert Celsius to Fahrenheit")
+        print("2. Convert Fahrenheit to Celsius")
+        print("3. Exit")
+        choice = input("Choose an option (1-3):")
+        if choice == "1":
+            c = vaild_num("Enter temperature in Celsius:")
+            print(cels_fahr, "F")
+        elif choice == "2":
+            f = vaild_num("Enter temperature in Fahrenheit")
+            print(fahr_cels, "C")
+        elif choice == "3":
+            print("Done")
+            break
+        else:
+            print("Invaild choice")
 
 if __name__ == "__main__":
-    main()
+    menu()
