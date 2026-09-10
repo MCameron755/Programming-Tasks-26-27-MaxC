@@ -13,12 +13,22 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+import random
 
+def linear_search(values, target):
+    for index, value in enumerate(values):
+        if value == target:
+            return index
+    return -1
 
 if __name__ == "__main__":
-    main()
+    randomlist = [random.randint(1, 20) for _ in range(10)]
+    print("Generated list:", randomlist)
+    try:
+        userinput = input("Enter a target integer to search for:")
+        targetvalue = int(userinput)
+        resultinder = linear_search(randomlist, targetvalue)
+        if resultindex != -1:
+            print("Target:", targetvalue, "found at index:", resultindex)
+        else:
+            print("Target", target value, "not found in the list")
