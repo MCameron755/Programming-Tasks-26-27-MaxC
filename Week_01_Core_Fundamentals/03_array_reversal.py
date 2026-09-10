@@ -12,12 +12,16 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+import random
 
+def reverse_list(values):
+    reversed_values = []
+    for i in range(len(values) - 1, -1, -1):
+        reversed_values.append(values[i])
+    return reversed_values
 
 if __name__ == "__main__":
-    main()
+    original_list = [random.randint(1, 100) for _ in range(10)]
+    reversed_list = reverse_list(original_list)
+    print("Original list:", original_list)
+    print("Reversed list:", reversed_list)
