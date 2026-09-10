@@ -14,19 +14,31 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    list = []
+def calculate_avg(values):
     total = 0
-    enterlist = input("Enter a list of numbers")
-    list = enterlist.split()
-    num = 0
-    for i in range len(list):
-        total = total + list[num]
-        num = num + 1
-    mean = total / len(list)
-    pass
+    count = 0
+    for value in values:
+        total = total + value
+        count = count + 1
+    total = total / count
+    return total
 
-
+def user_list():
+    numlist = []
+    print("Enter your list of number. Type 'done' when finished")
+    while True:
+        numinput = input("Enter a number:").strip()
+        if numinput == "done":
+            break
+        try:
+            number = float(numinput)
+            numlist.append(number)
+        except ValueError:
+            print("Invalid input")
+    return numlist
 
 if __name__ == "__main__":
-    main()
+    userinput = user_list()
+    avg = calculate_avg(userinput)
+    print("Your list was:", userinput)
+    print("Calculated Average:", avg)
