@@ -15,6 +15,15 @@ TODO:
 """
 
 def main():
+    list = []
+    total = 0
+    enterlist = input("Enter a list of numbers")
+    list = enterlist.split()
+    num = 0
+    for i in range len(list):
+        total = total + list[num]
+        num = num + 1
+    mean = total / len(list)
     pass
 
 
