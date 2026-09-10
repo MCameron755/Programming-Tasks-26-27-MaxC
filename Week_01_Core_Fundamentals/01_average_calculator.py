@@ -25,7 +25,7 @@ def calculate_avg(values):
 
 def user_list():
     numlist = []
-    print("Enter your list of number. Type 'done' when finished")
+    print("Enter your list of numbers. Type 'done' when finished")
     while True:
         numinput = input("Enter a number:").strip()
         if numinput == "done":
