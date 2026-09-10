@@ -22,5 +22,22 @@ def find_min_max(values):
             maxvalue = value
     return minvalue, maxvalue
 
+def user_list():
+    numlist = []
+    print("Enter your list of numbers. Type 'done' when finished")
+    while True:
+        numinput = input("Enter a number:").strip()
+        if numinput == "done":
+            break
+        try:
+            number = float(numinput)
+            numlist.append(number)
+        except ValueError:
+            print("Invalid input")
+    return numlist
+
 if __name__ == "__main__":
-    
+    userinput = user_list()
+    mni, max = find_min_max(userinput)
+    print("Minimum value from list inputted:", min)
+    print("Maximum value from list inputted:", max)
