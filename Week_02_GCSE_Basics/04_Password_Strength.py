@@ -14,12 +14,38 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+password = input("Enter a password: ")
 
+has_length = len(password) >= 8
+has_num = False
+has_upper = False
+has_lower = False
+has_special = False
+special_characters = "!@#~£$%^&*()_+-={}[]:;/\|,.<>?`¬"
 
-if __name__ == "__main__":
-    main()
+for char in password:
+    if char.isdigit():
+        has_num = True
+    if char.isupper():
+        has_upper = True
+    if char.islower():
+        has_lower = True
+    if char in special_characters:
+        has_special = True
+
+score = 0
+if has_length:
+    score += 1
+if has_num:
+    score += 1
+if has_upper and has_lower:
+    score += 1
+if has_special:
+    score += 1
+
+if score <= 2:
+    print("Current password strength: Weak")
+elif score == 3:
+    print("Current password strength: Medium")
+else:
+    print("Current password strength: Strong")

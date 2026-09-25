@@ -11,12 +11,22 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
-
-
-if __name__ == "__main__":
-    main()
+shoppinglist = []
+while True:
+    item = input("Enter an item to add to the shopping list (Type 'DONE' when finished): ")
+    if item == "DONE":
+        break
+    shoppinglist.append(item)
+print("Your shopping list: ")
+for x, item in enumerate(shoppinglist, start=1):
+    print(x,".",item)
+edititem = input("Do you want to edit an item? (Y/N)")
+if edititem =="Y":
+    itemnum = int(input("Enter the number of the item you want to edit: "))
+    if 1 <= itemnum <= len(shoppinglist):
+        olditem = shoppinglist[itemnum - 1]
+        newitem = input("Enter new item to replace '" + olditem + "': ")
+        shoppinglist[itemnum - 1] = newitem
+        print("Item updated")
+    else:
+        print("Invalid item number")
