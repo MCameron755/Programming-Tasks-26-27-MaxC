@@ -10,12 +10,14 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
-
-
-if __name__ == "__main__":
-    main()
+filename = input("Enter the filename: ")
+searchterm = input("Enter the search term: ")
+try:
+    linecount = 0
+    with open(filename, 'r') as file:
+        for line in file:
+            if searchterm in line:
+                linecount += 1
+    print(f"The term '{searchterm}' was found in {linecount} lines")
+except FileNotFoundError:
+    print(f"File '{filename}' not found.")

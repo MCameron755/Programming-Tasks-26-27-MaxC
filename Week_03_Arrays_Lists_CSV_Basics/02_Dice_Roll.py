@@ -15,12 +15,40 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+import random
 
+def roll_die():
+    try:
+        x = int(input("Enter the number of times to roll the die: "))
+    except ValueError:
+        print("Invalid input. Please enter an integer.")
+        return
+    rolls = []
+    print("Rolling the die")
+    for _ in range(x):
+        roll = random.randint(1, 6)
+        rolls.append(roll)
+        print(f"Roll: {roll}")
+    counts = [rolls.count(side) for side in range(1, 7)]
+    totalsperside = [counts[i] * (i + 1) for i in range(6)]
+    averageroll = sum(rolls) / x if x > 0 else 0
+    while True:
+        print("\nOptions:")
+        print("1. Print totals for each side")
+        print("2. Print average dice roll")
+        print("3. Print counts for each of the 6 sides")
+        print("4. Exit")
+        choice = input("Enter your choice (1-4): ")
+        if choice == '1':
+            print(f"Totals for each side: {totalsperside}")
+        elif choice == '2':
+            print(f"Average dice roll: {averageroll:.2f}")
+        elif choice == '3':
+            print(f"Counts for each side: {counts}")
+        elif choice == '4':
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
-    main()
+    roll_die()

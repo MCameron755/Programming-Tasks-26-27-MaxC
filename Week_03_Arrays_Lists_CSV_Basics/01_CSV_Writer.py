@@ -14,12 +14,18 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+import csv
+import os
 
-
-if __name__ == "__main__":
-    main()
+filename = "userdata.csv"
+name = input("Enter your name: ")
+age = input("Enter your age: ")
+favouritecolour = input("Enter your favourite colour: ")
+anything = input("Enter anything you want: ")
+fileexists = os.path.exists(filename)
+with open(filename, "a", newline="") as csvfile:
+    writer = csv.writer(csvfile)
+    if not fileexists:
+        writer.writerow(["Name", "Age", "Favourite Colour", "Anything"])
+    writer.writerow([name, age, favouritecolour, anything])
+print(f"Data saved to {filename}.")

@@ -16,12 +16,26 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+def calculatetempstats(filepath):
+    temperatures = []
+    with open(filepath, 'r') as file:
+        for line in file:
+            parts = line.split()
+            if not parts or len(parts) < 2:
+                continue
+            try:
+                tempvalue = float(parts[1])
+                temperatures.append(tempvalue)
+            except ValueError:
+                continue
+    if not temperatures:
+        print("No valid temperature data found.")
+        return
+    highesttemp = max(temperatures)
+    lowesttemp = min(temperatures)
+    averagetemp = sum(temperatures) / len(temperatures)
+    print(f"Highest Temperature: {highesttemp}°C")
+    print(f"Lowest Temperature: {lowesttemp}°C")
+    print(f"Average Temperature: {averagetemp:.2f}°C")
 
-
-if __name__ == "__main__":
-    main()
+calculatetempstats("meantemp_daily_totals.txt")
