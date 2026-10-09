@@ -12,12 +12,19 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
-
+def bubblesort(arr):
+    n = len(arr)
+    swapcount = 0
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapcount += 1
+    return arr, swapcount
 
 if __name__ == "__main__":
-    main()
+    testlist = [56, 23, 83, 26, 11, 94, 35]
+    print("Original list:", testlist)
+    sortedlist, totalswaps = bubblesort(testlist)
+    print("Sorted list:", sortedlist)
+    print("Total swaps:", totalswaps)
