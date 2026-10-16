@@ -13,12 +13,26 @@ TODO:
 - Add demonstration code under `if __name__ == "__main__":`
 """
 
-def main():
-    # TODO: Write demonstration/testing code
-    # If you want to delete all the code here and work just with a blank file go ahead, remember anything under the if __name__=="__main__":
-    # will only run if this module is being run directly. So used this subprocedure to carry out testing if it is going to be an imported file.
-    pass
+def filestats(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+    numlines = len(lines)
+    fulltext = "".join(lines)
+    numchar = len(fulltext)
+    words = fulltext.split()
+    numwords = len(words)
+    if words:
+        wordcounts = {}
+        for word in words:
+            word = word.lower()
+            if word in wordcounts:
+                wordcounts[word] += 1
+            else:
+                wordcounts[word] = 1
+        mostfreqword = max(wordcounts, key=wordcounts.get)
+    else:
+        mostfreqword = None
+    return numlines, numwords, numchar, mostfreqword
 
-
-if __name__ == "__main__":
-    main()
+filetotest = "scores.txt"
+filestats(filetotest)
